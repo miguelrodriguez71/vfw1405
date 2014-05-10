@@ -6,7 +6,7 @@
 Ti.UI.setBackgroundColor("#000");
 
 // Array Declare
-var sports = ["1.Baseball","2.Basketball","3.Golf","4.Soccer","5.Tennis"];
+var sports = ["Baseball","Basketball","Golf","Soccer","Tennis"];
 var sportsIndex = 0;
 
 var mainScreen = Ti.UI.createWindow({
