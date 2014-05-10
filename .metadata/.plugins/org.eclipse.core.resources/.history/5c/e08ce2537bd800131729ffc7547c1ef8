@@ -1,0 +1,19 @@
+Ti.UI.setBackgroundColor("#000");
+
+var mainScreen = Ti.UI.createWindow({
+	backgroundColor : "#fff"
+});
+
+var labelView = Ti.UI.createView({
+    backgroundColor : "#333",
+    height : 100,
+    widht : 100,
+    top : 20
+	
+});
+
+
+
+mainScreen.add(labelView);
+mainScreen.open();
+

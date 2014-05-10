@@ -1,0 +1,1 @@
+previousLabel.addEventListener("click",nextTitle);

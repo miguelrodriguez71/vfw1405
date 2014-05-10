@@ -1,0 +1,16 @@
+Ti.UI.setBackgroundColor("#000");
+
+var mainScreen = Ti.UI.createWindow({
+	backgroundColor : "#fff"
+});
+
+var mainView = Ti.UI.createView({
+    backgroundColor : "#333",
+    height : 100,
+    widht : 200	
+	
+});
+
+mainScreen.add(mainView);
+mainScreen.open();
+
