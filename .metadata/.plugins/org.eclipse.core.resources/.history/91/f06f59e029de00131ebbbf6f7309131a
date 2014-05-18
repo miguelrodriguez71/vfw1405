@@ -1,0 +1,212 @@
+// Rodriguez Miguel
+// Visual Framework
+// VFW1405
+// Project 2
+
+//JSON Object
+
+var worldCupTeams = {
+	"argentina":{
+		"country": "ARGENTINA",
+		"playersList": [
+			{
+				"name": "Leo Messi",
+				"description": "Team: FC Barcelona, Position: Forward. Born: 06-24-1987. Actually one of the best soccer players of the world."
+			},
+			{
+				"name": "Sergio Aguero",
+				"description": "Team: Manchester City, Position: Forward. Born: 06-02-1988"
+			}
+		]
+	},
+	"brasil":{
+		"country": "BRASIL",
+		"playersList": [
+			{
+				"name": "Neymar Jr.",
+				"description": "Team: FC Barcelona, Position: Forward. Born: 05-02-1992."
+			},
+			{
+				"name": "Marcelo",
+				"description": "Team: Real Madrid CF, Position: Guard. Born: 05-12-1988."
+			}
+		]
+	},
+	"usa":{
+		"country": "UNITED STATES",
+		"playersList": [
+			{
+				"name": "Landon Donovan",
+				"description": "Team: LA Galaxy, Position: Forward. Born: 03-04-1982. This is his Fourth World Cup apparency."
+			},
+			{
+				"name": "Clint Dempsey",
+				"description": "Team: Seattle Sounders FC, Position: Forward. Born: 03-09-1983."
+			}
+		]
+	}
+};
+
+Titanium.UI.setBackgroundColor('#000');
+
+// Create Main screen
+var mainScreen = Ti.UI.createWindow({
+	backgroundColor: "#fff"
+	
+});
+
+var navWindow = Ti.UI.iOS.createNavigationWindow({
+	window: mainScreen
+});
+
+// Create View for Title
+var titleView = Ti.UI.createView({
+	height: 65,
+	backgroundColor: "#fff",
+	top: 0
+});
+
+// Create Label for Title
+var mainTitle = Ti.UI.createLabel({
+	text: "World Cup 2014 Teams",
+	Color: "#000",
+	font: {fontSize: 20, fontFamily: "Verdana", fontWeight: "bold"},
+	top: 30,
+	textAlign: "center"
+});
+
+// Create a Border to divide Title
+var border = Ti.UI.createView({
+	height: 1,
+	backgroundColor: "d8e5ea",
+	top: titleView.height + titleView.top
+});
+
+// Create Event Listener Function
+//
+//
+var getinfo = function() {
+	var infoWindow = Ti.UI.createWindow({
+		backgroundColor: "#fff"
+	});
+	
+	// Create View for Title
+	var infoTitleView = Ti.UI.createView({
+		height: 65,
+		backgroundColor: "#fff",
+		top: 0
+	});
+	
+	// Create Label for Title
+	var infoMainTitle = Ti.UI.createLabel({
+		text: this.title,
+		Color: "#000",
+		font: {fontSize: 20, fontFamily: "Verdana", fontWeight: "bold"},
+		top: 30,
+		textAlign: "center"
+	});
+	
+	// Create a Border to divide Title
+	var infoBorder = Ti.UI.createView({
+		height: 1,
+		backgroundColor: "d8e5ea",
+		top: infoTitleView.height + infoTitleView.top
+	});
+	
+	// Create a Label to show the Info about the player
+	var infoplayer = Ti.UI.createLabel({
+		text: this.info,
+		top: infoBorder.top + infoBorder.height + 60
+	});
+	
+	// Create a Boton to go back to main window
+	
+/*	var backToMain = function(){
+		infoWindow.close();
+	};
+	
+	var backButton = Ti.UI.createLabel({
+		backgroundColor: "0f059a",
+		font: {fontSize: 12, fontFamily: "Arial"},
+		height: 50,
+		botton: 0,
+		color: "#fff",
+		textAlign: "center",
+		text: "BACK"
+	});
+	
+	backButton.addEventListener("click", backToMain);
+	
+	infoTitleView.add(infoMainTitle);
+	infoWindow.add(infoTitleView,infoBorder,infoplayer,backButton);
+	infoWindow.open();
+};
+*/
+
+// Create a Table
+var teams = Ti.UI.createTableView({
+	top: border.top + border.height
+	
+});
+
+if(Ti.Platform.name === "iPhone"){
+	teams.style = Ti.UI.iPhone.TableViewStyle.GROUPED;
+}
+
+
+// Create all sections
+var argentinaSection = Ti.UI.createTableViewSection({
+	headerTitle: worldCupTeams.argentina.country
+});
+
+var brasilSection = Ti.UI.createTableViewSection({
+	headerTitle: worldCupTeams.brasil.country
+});
+
+var usaSection = Ti.UI.createTableViewSection({
+	headerTitle: worldCupTeams.usa.country
+});
+
+
+// Create all Rows for each team
+for(var i=0; i < worldCupTeams.argentina.playersList.length; i++) {
+	var playerRow = Ti.UI.createTableViewRow({
+		title: worldCupTeams.argentina.playersList[i].name,
+		info: worldCupTeams.argentina.playersList[i].description,
+		hasChild: true
+	});
+	argentinaSection.add(playerRow);
+	playerRow.addEventListener("click",getinfo);
+}
+
+for(var i=0; i < worldCupTeams.brasil.playersList.length; i++) {
+	var playerRow = Ti.UI.createTableViewRow({
+		title: worldCupTeams.brasil.playersList[i].name,
+		info: worldCupTeams.brasil.playersList[i].description,
+		hasChild: true
+	});
+	brasilSection.add(playerRow);
+	playerRow.addEventListener("click",getinfo);
+}
+
+for(var i=0; i < worldCupTeams.usa.playersList.length; i++) {
+	var playerRow = Ti.UI.createTableViewRow({
+		title: worldCupTeams.usa.playersList[i].name,
+		info: worldCupTeams.usa.playersList[i].description,
+		hasChild: true
+	});
+	usaSection.add(playerRow);
+	playerRow.addEventListener("click",getinfo);
+}
+
+
+var teamsSections = [argentinaSection,brasilSection,usaSection];
+
+teams.setData(teamsSections);
+
+
+titleView.add(mainTitle);
+mainScreen.add(titleView,border,teams);
+
+navWindow.open();
+
