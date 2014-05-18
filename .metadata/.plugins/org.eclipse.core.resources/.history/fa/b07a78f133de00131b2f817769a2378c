@@ -1,0 +1,106 @@
+// Rodriguez Miguel
+// Visual Framework
+// VFW1405
+// Project 2
+
+//JSON Object
+var loadfile = require(events);
+
+Titanium.UI.setBackgroundColor('#000');
+
+// Create Main screen
+var mainScreen = Ti.UI.createWindow({
+	title: "World Cup 2014 Teams",
+	backgroundColor: "#fff"
+	
+});
+
+var navWindow = Ti.UI.iOS.createNavigationWindow({
+	window: mainScreen
+});
+
+// Create Event Listener Function
+//
+//
+var getinfo = function() {
+	var infoWindow = Ti.UI.createWindow({
+		backgroundColor: "#fff"
+	});
+	
+	// Create a Label to show the Info about the player
+	var infoplayer = Ti.UI.createLabel({
+		text: this.info,
+	});
+	
+	//infoTitleView.add(infoMainTitle);
+	infoWindow.add(infoplayer);
+	navWindow.openWindow(infoWindow);
+};
+
+// Create a Table
+var teams = Ti.UI.createTableView({
+	//top: border.top + border.height
+	
+});
+
+if(Ti.Platform.name === "iPhone"){
+	teams.style = Ti.UI.iPhone.TableViewStyle.GROUPED;
+}
+
+
+// Create all sections
+var argentinaSection = Ti.UI.createTableViewSection({
+	headerTitle: worldCupTeams.argentina.country
+});
+
+var brasilSection = Ti.UI.createTableViewSection({
+	headerTitle: worldCupTeams.brasil.country
+});
+
+var usaSection = Ti.UI.createTableViewSection({
+	headerTitle: worldCupTeams.usa.country
+});
+
+
+// Create all Rows for each team
+for(var i=0; i < worldCupTeams.argentina.playersList.length; i++) {
+	var playerRow = Ti.UI.createTableViewRow({
+		title: worldCupTeams.argentina.playersList[i].name,
+		info: worldCupTeams.argentina.playersList[i].description,
+		hasChild: true
+	});
+	argentinaSection.add(playerRow);
+	playerRow.addEventListener("click",getinfo);
+}
+
+for(var i=0; i < worldCupTeams.brasil.playersList.length; i++) {
+	var playerRow = Ti.UI.createTableViewRow({
+		title: worldCupTeams.brasil.playersList[i].name,
+		info: worldCupTeams.brasil.playersList[i].description,
+		hasChild: true
+	});
+	brasilSection.add(playerRow);
+	playerRow.addEventListener("click",getinfo);
+}
+
+for(var i=0; i < worldCupTeams.usa.playersList.length; i++) {
+	var playerRow = Ti.UI.createTableViewRow({
+		title: worldCupTeams.usa.playersList[i].name,
+		info: worldCupTeams.usa.playersList[i].description,
+		hasChild: true
+	});
+	usaSection.add(playerRow);
+	playerRow.addEventListener("click",getinfo);
+}
+
+
+var teamsSections = [argentinaSection,brasilSection,usaSection];
+
+teams.setData(teamsSections);
+
+
+//titleView.add(mainTitle);
+mainScreen.add(teams);
+
+navWindow.open();
+

@@ -1,0 +1,23 @@
+// Create a Table
+var teams = Ti.UI.createTableView({
+	//top: border.top + border.height
+	
+});
+
+if(Ti.Platform.name === "iPhone"){
+	teams.style = Ti.UI.iPhone.TableViewStyle.GROUPED;
+}
+
+
+// Create all sections
+var argentinaSection = Ti.UI.createTableViewSection({
+	headerTitle: worldCupTeams.argentina.country
+});
+
+var brasilSection = Ti.UI.createTableViewSection({
+	headerTitle: worldCupTeams.brasil.country
+});
+
+var usaSection = Ti.UI.createTableViewSection({
+	headerTitle: worldCupTeams.usa.country
+});

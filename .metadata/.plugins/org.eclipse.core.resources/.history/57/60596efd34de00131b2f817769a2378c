@@ -3,6 +3,7 @@
 // VFW1405
 // Project 2
 
+//JSON Object
 
 
 Titanium.UI.setBackgroundColor('#000');
@@ -14,14 +15,11 @@ var mainScreen = Ti.UI.createWindow({
 	
 });
 
-// Create a Navigation Window
 var navWindow = Ti.UI.iOS.createNavigationWindow({
 	window: mainScreen
 });
 
-// Loading Data and Building Table
-var loadfile = require("TableAndEvents");
+var loadfile = require("events");
 
-// Main Window Open
 navWindow.open();
 
