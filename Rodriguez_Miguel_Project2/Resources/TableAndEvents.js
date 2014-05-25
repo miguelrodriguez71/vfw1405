@@ -47,14 +47,15 @@ var worldCupTeams = {
 // Create Event Listener Function
 //
 //
-var getinfo = function() {
+var getInfo = function(informa) {
 	var infoWindow = Ti.UI.createWindow({
+		title: informa.title,
 		backgroundColor: "#fff"
 	});
 	
 	// Create a Label to show the Info about the player
 	var infoplayer = Ti.UI.createLabel({
-		text: this.info,
+		text: informa.info
 	});
 	
 	//infoTitleView.add(infoMainTitle);
@@ -95,7 +96,7 @@ for(var i=0; i < worldCupTeams.argentina.playersList.length; i++) {
 		hasChild: true
 	});
 	argentinaSection.add(playerRow);
-	playerRow.addEventListener("click",getinfo);
+//	playerRow.addEventListener("click",getinfo);
 }
 
 for(var i=0; i < worldCupTeams.brasil.playersList.length; i++) {
@@ -105,7 +106,7 @@ for(var i=0; i < worldCupTeams.brasil.playersList.length; i++) {
 		hasChild: true
 	});
 	brasilSection.add(playerRow);
-	playerRow.addEventListener("click",getinfo);
+//	playerRow.addEventListener("click",getinfo);
 }
 
 for(var i=0; i < worldCupTeams.usa.playersList.length; i++) {
@@ -115,11 +116,16 @@ for(var i=0; i < worldCupTeams.usa.playersList.length; i++) {
 		hasChild: true
 	});
 	usaSection.add(playerRow);
-	playerRow.addEventListener("click",getinfo);
+//	playerRow.addEventListener("click",getinfo);
 }
 
 
 var teamsSections = [argentinaSection,brasilSection,usaSection];
+
+teams.addEventListener("click",function(events) {
+	getInfo(events.source);
+	
+});
 
 teams.setData(teamsSections);
 

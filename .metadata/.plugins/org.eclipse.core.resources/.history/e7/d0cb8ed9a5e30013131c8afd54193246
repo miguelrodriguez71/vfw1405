@@ -1,0 +1,81 @@
+var buildGallery = function() {
+	var platWidth = Ti.Platform.displayCaps.platformWidth;
+	var platHeight = Ti.Platform.displayCaps.platformHeight;
+
+	var targetFolder = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "images");
+	var pictureArray = targetFolder.getDirectoryListing();
+	var totalImages = pictureArray.length;
+	var imagesPerRow = 4;
+	
+	var imageWidth = (platWidth - 50) / 4;
+	var imageHeight = imageWidth;	
+
+	console.log("ancho del movil  "+ platWidth);
+	console.log("largo  "+ platHeight);
+	
+	console.log("ancho imagen  "+ imageWidth);
+	console.log("largo imagen  "+ imageHeight);
+	
+	var winGallery = Ti.UI.createWindow({
+		title: "Countries Gallery",
+
+		backgroundColor: "#fff",
+		top: 10,
+		left: 10,
+		right: 10
+	});
+	
+	var picContainer = Ti.UI.createView({
+		backgroundColor: "fff",
+		top: 10,
+		layout: "horizontal",
+		width: platWidth -20,
+	});	
+	
+	var navWindow = Ti.UI.iOS.createNavigationWindow({
+		window: winGallery
+	});	
+		
+	var closeButton = Ti.UI.createView({
+		backgroundColor: "fff",
+		bottom: 10,
+		left: 10,
+		width: picContainer.width -20,
+		heigth: 40,
+	});
+	
+	var closeLabel = Ti.UI.createLabel({
+		text: "Close",
+		color: "Black",
+		textAlign: "center"
+	});
+	
+
+	
+		for(var i = 0; i < totalImages;  i++) {
+			var myPicture = Ti.UI.createImageView({
+				image: "images/"+ pictureArray[i],
+				width: imageWidth-5,
+				height: imageHeight,
+				borderRadius: 2,
+				top: 10,
+				left: 10
+				
+			});
+			
+			picContainer.add(myPicture);		
+		};
+	
+	winGallery.add(picContainer);
+	
+//	closeButton.add(closeLabel);
+	
+//    winGallery.add(closeButton);
+    
+	navWindow.open();
+};
+
+
+mainButton.addEventListener("click", buildGallery);
+
+

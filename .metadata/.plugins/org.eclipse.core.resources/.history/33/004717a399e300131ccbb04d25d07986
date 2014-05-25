@@ -1,0 +1,25 @@
+var buildGallery = function() {
+	var platWidth = Ti.Platform.displayCaps.platformWidth;
+	var platHeight = Ti.Platform.displayCaps.platformHeight;
+	var totalImages = 30;
+	var imagesPerRow = 5;
+
+	var winGallery = Ti.UI.createWindow({
+		layout: "horizontal"
+	});
+	
+	var myImages = ["brasil.jpg","chile.jpg","germany.jpg","croacia.jpg","china.jpg","canada.jpg"];
+	
+	var myPictures = Ti.UI.createImageView({
+		image: "images/brasil.jpg"
+	});
+	
+	winGallery.add(myPictures);
+
+	winGallery.open();
+};
+
+
+mainButton.addEventListener("click", buildGallery);
+
+
