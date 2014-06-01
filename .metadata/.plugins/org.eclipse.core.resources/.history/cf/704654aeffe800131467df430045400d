@@ -1,0 +1,36 @@
+// Rodriguez Miguel
+// Project 4
+// Visual Framework 1405
+
+var platWidth = Ti.Platform.displayCaps.platformWidth;
+var platHeight = Ti.Platform.displayCaps.platformHeight;
+var buttons = ["Stadiums","Famous Players","Otro Custom"];
+var colorsBG  = ["yellow","green","white"];
+
+mainWindow = Ti.UI.createWindow({
+	title: "World Cup Brasil 2014",
+	color: "black",
+	backgroundColor: "#fff"
+});
+
+for(var i = 0; i < 3;  i++) {
+	var container = Ti.UI.createView({
+		borderRadius: 3,
+		width: platWidth,
+		top: (i+1)*60,
+		height: 60,
+		backgroundColor: colorsBG[i]
+	});
+	var buttonView = Ti.UI.createLabel({
+		color: colorsBG[i],
+		text: buttons[i],
+		textAlign: "center"
+	});
+	container.add(buttonView);
+	mainWindow.add(container);
+	
+};
+
+mainWindow.open();
+
+

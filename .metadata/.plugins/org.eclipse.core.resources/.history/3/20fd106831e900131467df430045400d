@@ -1,0 +1,60 @@
+var currentWindow = Ti.UI.currentWindow;
+var platWidth = Ti.Platform.displayCaps.platformWidth;
+var platHeight = Ti.Platform.displayCaps.platformHeight;
+var totalRight = 0;
+var questions = ["Who did wins World Cup Spain 1982?",
+				"What is Pele's First Name?",
+				"Mexico's Shirt Color?",
+				"What City will host world cup final this year?",
+				"How many players by each team?"];
+var answers = ["Italy","Edson","Green","Rio de Janeiro","11"];
+
+
+var pb=Titanium.UI.createProgressBar({
+	backgrundColor: "black",
+	color: "#fff",
+    top:40,
+    width:250,
+    height:'auto',
+    min:0,
+    max:5,
+    value:1,
+    message:'Question 1 of 5',
+    font:{fontSize:14, fontWeight:'bold'},
+    style:Titanium.UI.iPhone.ProgressBarStyle.PLAIN,
+});
+
+var nextButton = Ti.UI.createLabel({
+	top: platHeight-200,
+	backgroundColor: "#3f2cf1",
+	color: "#fff",
+	height: "auto",
+	width: "auto",
+	textAlign: "center",
+	text: "Play Now"
+});
+	
+
+/*
+for(var i=0; i < 5; i++) {
+	var question = Ti.UI.createLabel({
+		top:100,
+		text: questions[i]
+	});
+	
+	var answer = Ti.UI.createTextField({
+		 borderStyle : Titanium.UI.INPUT_BORDERSTYLE_BEZEL,
+		 width : 300,
+		 height : 35,
+	});
+	
+
+	
+	if (answer === answers[i]) {
+		totalRight++;
+	};
+};
+
+*/
+currentWindow.add(pb,nextButton);
+//pb.show();

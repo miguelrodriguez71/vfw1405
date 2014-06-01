@@ -1,0 +1,2 @@
+var currentWindow = Ti.UI.currentWindow;
+alert("estoy aqui en "+ currentWindow.title);

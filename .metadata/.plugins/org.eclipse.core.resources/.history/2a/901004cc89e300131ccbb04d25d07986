@@ -1,5 +1,0 @@
-var buildGallery = function() {
-	console.log("ESTOY BIEN GRACIAS A DIOS");
-	mainButton.addEventListener("click", buildGallery);
-
-};

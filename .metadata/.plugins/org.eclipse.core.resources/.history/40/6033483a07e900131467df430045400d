@@ -1,0 +1,53 @@
+// Rodriguez Miguel
+// Project 4
+// Visual Framework 1405
+
+// Platform variables and general arrays
+var platWidth = Ti.Platform.displayCaps.platformWidth;
+var platHeight = Ti.Platform.displayCaps.platformHeight;
+var buttons = ["Stadiums","Famous Players","Otro Custom"];
+var colorsBG  = ["yellow","green","white"];
+var container = [null,null,null];
+var buttonLabel = [null,null,null];
+
+//Main Window
+var mainWindow = Ti.UI.createWindow({
+	title: "World Cup Brasil 2014",
+	color: "black",
+	backgroundColor: "#ebf2f4"
+});
+
+// Menu Option Views or Buttons
+for(var i = 0; i < 3;  i++) {
+	    container[i] = Ti.UI.createView({
+		borderRadius: 3,
+		width: platWidth,
+		top: (i+1)*80,
+		height: 80,
+		backgroundColor: colorsBG[i]
+	});
+        buttonLabel[i] = Ti.UI.createLabel({
+		color: "black",
+		backgroundColor: colorsBG[i],
+		text: buttons[i],
+		textAlign: "center"
+	});
+	container[i].add(buttonLabel[i]);
+	mainWindow.add(container[i]);
+	
+};
+
+// Event Listener 
+
+container.addEventListener("click",function(event){
+console.log(event);
+});
+	
+// Navigation Window
+
+var navWindow = Ti.UI.iOS.createNavigationWindow({
+	window: mainWindow
+});	
+
+navWindow.open();
+

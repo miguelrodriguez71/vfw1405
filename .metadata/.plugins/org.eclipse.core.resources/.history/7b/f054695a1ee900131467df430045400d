@@ -1,0 +1,34 @@
+var currentWindow = Ti.UI.currentWindow;
+
+var platWidth = Ti.Platform.displayCaps.platformWidth;
+var platHeight = Ti.Platform.displayCaps.platformHeight;
+
+var imageFolder = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "images");
+var imageArray = imageFolder.getDirectoryListing();
+var totalImages = imageArray.length;
+var imageWidth = (platWidth - 50) / 4;
+var imageHeight = imageWidth;	
+
+var countryLabel = Ti.UI.createLabel({
+	top:100,
+	color: "black",
+	text: imageArray[0]
+});
+
+var picView = Ti.UI.createImageView({
+	image: "images/"+imageArray[0],
+	borderRadius:2,
+	left:10,
+	right: 10
+});
+
+var nextButton = Ti.UI.createLabel({
+	text: "Next Picture",
+	top: platHeight-100,
+	height: 90,
+	left: 10,
+	rigth: 10,
+	borderRadius: 2
+});
+
+currentWindow.add(countryLabel,picView,nextButton);

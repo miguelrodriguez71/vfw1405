@@ -1,0 +1,10 @@
+var currentWindow = Ti.UI.currentWindow;
+
+var platWidth = Ti.Platform.displayCaps.platformWidth;
+var platHeight = Ti.Platform.displayCaps.platformHeight;
+
+var imageFolder = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "images");
+var imageArray = imageFolder.getDirectoryListing();
+var totalImages = imageArray.length;
+
+console.log("total images"+ totalImages);
