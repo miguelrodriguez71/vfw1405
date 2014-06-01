@@ -5,7 +5,7 @@
 // Platform variables and general arrays
 var platWidth = Ti.Platform.displayCaps.platformWidth;
 var platHeight = Ti.Platform.displayCaps.platformHeight;
-var buttons = ["Countries","Famous Players","Trivia"];
+var buttons = ["Countries","Famous Players","Otro Custom"];
 var colorsBG  = ["yellow","green","white"];
 var fileToRun = ["countries.js","players.js","custom.js"];
 
