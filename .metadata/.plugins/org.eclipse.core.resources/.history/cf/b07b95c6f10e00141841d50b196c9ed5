@@ -1,0 +1,45 @@
+// Rodriguez Miguel
+// Mobile Interfaces and Usability - 1407
+// About me App
+
+
+
+Titanium.UI.setBackgroundColor('#000');
+
+// Create Main screen
+var mainScreen = Ti.UI.createWindow({
+	title: "About me App",
+	backgroundColor: "#fff"
+	
+});
+
+// Create a view for my Personal Info
+	var pictureMe = Ti.UI.createImageView({
+		top: 40,
+		Height: 200,
+		width: 300,
+		left: 10,
+		image:"images/"+aboutMe.personalInfo.pic
+	});
+
+// Loading Data and Building Table
+var loadfile = require("json");
+		
+/*
+// Create a Navigation Window
+var navWindow = Ti.UI.iOS.createNavigationWindow({
+	window: mainScreen
+});
+
+// Loading Data and Building Table
+var loadfile = require("json");
+
+// Main Window Open
+navWindow.open();
+
+*/
+
+mainScreen.add(pictureMe);
+
+mainScreen.open();
+

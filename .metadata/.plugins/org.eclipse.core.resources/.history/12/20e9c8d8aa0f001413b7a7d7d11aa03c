@@ -1,0 +1,66 @@
+var aboutMe = {
+	"personalInfo":{
+		"name": "MIGUEL RODRIGUEZ MARTINEZ",
+		"pic": "miguel.jpg",
+		"Height": "6 Feet",
+		"Weight": "245 pounds",
+		"timeZone": "Eastern",
+		"whyMDP": "I love programming. Someday, I would like to be called as one of the biggest Mobile Devices Programmer",
+		"levelJavascript": "Beginner",
+		"levelTitanium": "Very Confortable",
+		"favoriteMovie": "Forrest Gump",
+		"favoriteSports": "Soccer, Basketball, Baseball, Football",
+		"biography": "I was born in Venezuela, I have a 4 years degree as IT Programmer, love sports, happy married with Ninoska, with three kid: Fabiola, Adrian and JD",
+		"chatInfo": [
+			{
+				"hostName": "AIM.COM",
+				"userId": "miguelrodriguez@fullsail.edu"
+			}
+		]
+
+	}
+};
+
+
+// Create Main View
+mainContainer = Ti.UI.createView({
+	borderRadius: 3,
+	height:500,
+	backgroundColor: "#408ede",
+	
+});
+
+var nameText = Ti.UI.createLabel({
+	top: 40,
+	color : "#fff",
+	text : "Miguel A. Rodriguez Martinez",
+	font: {fontSize: 18, fontFamily: "Helvetica"}	
+});
+
+// Create a view for my Personal Info
+	var pictureMe = Ti.UI.createImageView({
+		top: 100,
+		borderRadius: 3,
+		Height: 200,
+		width: 300,
+		left: 10,
+		image:"images/miguel.jpg"
+	});
+
+
+
+// Button for Personal Info
+mainButton = Ti.UI.createLabel({
+	top: 400,
+	borderRadius: 4,
+	width: 200,
+	color: "#fff",
+	backgroundColor: "RED",
+	text: "View Personal Info",
+	textAlign: "center"
+});
+
+
+mainContainer.add(nameText,pictureMe, mainButton);
+
+mainScreen.add(mainContainer);

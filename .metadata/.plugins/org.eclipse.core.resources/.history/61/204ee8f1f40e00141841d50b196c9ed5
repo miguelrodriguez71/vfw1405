@@ -1,0 +1,72 @@
+var aboutMe = {
+	"personalInfo":{
+		"name": "MIGUEL RODRIGUEZ MARTINEZ",
+		"pic": "miguel.jpg",
+		"Height": "6 Feet",
+		"Weight": "245 pounds",
+		"timeZone": "Eastern",
+		"whyMDP": "I love programming. Someday, I would like to be called as one of the biggest Mobile Devices Programmer",
+		"levelJavascript": "Beginner",
+		"levelTitanium": "Very Confortable",
+		"favoriteMovie": "Forrest Gump",
+		"favoriteSports": "Soccer, Basketball, Baseball, Football",
+		"biography": "I was born in Venezuela, I have a 4 years degree as IT Programmer, love sports, happy married with Ninoska, with three kid: Fabiola, Adrian and JD",
+		"chatInfo": [
+			{
+				"hostName": "AIM.COM",
+				"userId": "miguelrodriguez@fullsail.edu"
+			}
+		]
+
+	}
+};
+
+// Create a view for my Personal Info
+	var pictureMe = Ti.UI.createImageView({
+		top: 30,
+		Height: 200,
+		width: 300,
+		left: 10,
+		image:"images/"+aboutMe.personalInfo.pic
+	});
+
+
+// Create a Table
+var stuff = Ti.UI.createTableView({
+	//top: border.top + border.height
+	
+});
+
+
+if(Ti.Platform.name === "iPhone"){
+	stuff.style = Ti.UI.iPhone.TableViewStyle.GROUPED;
+}
+
+
+// Create a section
+var myDataSection = Ti.UI.createTableViewSection({
+	headerTitle: aboutMe.personalInfo.name
+});
+
+// Create all Rows for personal info
+	var favStuff = Ti.UI.createTableViewRow({
+		title: "Favorite Stuff",
+		hasChild: true
+	});
+
+//	favStuff.addEventListener("click",getFav);
+
+	var bio = Ti.UI.createTableViewRow({
+		title: "Biography",
+		hasChild: true
+	});
+
+//	bio.addEventListener("click",getBio);
+
+stuff.setData(myDataSection);
+
+myDataSection.add(favStuff,bio);
+
+
+
+mainScreen.add(pictureMe,stuff);
